@@ -1,11 +1,12 @@
 package Devices;
 
+import Enums.LightState;
 import LightTypes.LightType;
 
 public class Light implements Device {
 
-    private boolean isTurnOn = false;
     private final LightType lightType;
+    private LightState state = LightState.OFF;
 
     public Light(LightType lightType)
     {
@@ -14,15 +15,15 @@ public class Light implements Device {
 
     @Override
     public String operate() {
-        String log = "Light (" + lightType.getType() + ") " + (isTurnOn ? "already turned On" : "turned On");
-        isTurnOn = true;
+        String log = "Light (" + lightType.getType() + ") state changed from " + state + " to " + LightState.BRIGHT;
+        state = LightState.BRIGHT;
         return log;
     }
 
-    public void turnOff()
+    public void changeState(LightState newState)
     {
-        isTurnOn = false;
-        System.out.println("Light (" + getLightType().getType() + ") is turned Off");
+        System.out.println("Light (" + lightType.getType() + ") state changed from " + state + " to " + newState);
+        state = newState;
     }
 
     public LightType getLightType() {

@@ -1,35 +1,79 @@
 import Devices.Light;
 import Devices.MusicSystem;
 import Devices.SecurityCamera;
-import Devices.TemperatureAndHumiditySensor;
+import Devices.Thermostat;
+import Enums.LightState;
+import Enums.MusicVolume;
+import Enums.ThermostatState;
 
 public class IoTFacade
 {
     private Light light;
     private MusicSystem musicSystem;
     private SecurityCamera securityCamera;
-    private TemperatureAndHumiditySensor temperatureAndHumiditySensor;
+    private Thermostat thermostat;
 
-    public IoTFacade(Light light , MusicSystem musicSystem , SecurityCamera securityCamera , TemperatureAndHumiditySensor temperatureAndHumiditySensor)
+    public IoTFacade(Light light , MusicSystem musicSystem , SecurityCamera securityCamera , Thermostat thermostat)
     {
         this.light = light;
         this.musicSystem = musicSystem;
         this.securityCamera = securityCamera;
-        this.temperatureAndHumiditySensor = temperatureAndHumiditySensor;
+        this.thermostat = thermostat;
     }
 
-    public void OnCameHome()
+    public void cameHome()
     {
+        System.out.println("Common Mode \n");
         System.out.println(light.operate());
+
         System.out.println(musicSystem.operate());
+        musicSystem.setVolume(MusicVolume.LOW);
+
+        System.out.println(thermostat.operate());
+
         securityCamera.stopRecording();
-        System.out.println(temperatureAndHumiditySensor.operate());
+
     }
 
-    public void OnLeftHome()
+    public void partyMode()
     {
-        light.turnOff();
+        System.out.println("Party Mode \n");
+
+        light.changeState(LightState.DIM);
+
+        System.out.println(musicSystem.operate());
+        musicSystem.setVolume(MusicVolume.HIGH);
+
+        thermostat.changeState(ThermostatState.PRODUCTIVE);
+
+        securityCamera.stopRecording();
+    }
+
+    public void nightMode()
+    {
+        System.out.println("Night Mode \n");
+
+        light.changeState(LightState.OFF);
+
         musicSystem.stopPlaying();
+
+        thermostat.changeState(ThermostatState.ECO);
+
         System.out.println(securityCamera.operate());
+
+    }
+
+    public void leaveHome()
+    {
+        System.out.println("Off Mode \n");
+
+        light.changeState(LightState.OFF);
+
+        musicSystem.stopPlaying();
+
+        thermostat.changeState(ThermostatState.OFF);
+
+        System.out.println(securityCamera.operate());
+
     }
 }

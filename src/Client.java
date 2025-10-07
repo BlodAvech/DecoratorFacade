@@ -15,17 +15,21 @@ public class Client
         Light light = new Light(new IncandescentLamp());
         MusicSystem musicSystem = new MusicSystem();
         SecurityCamera securityCamera = new SecurityCamera();
-        TemperatureAndHumiditySensor temperatureAndHumiditySensor = new TemperatureAndHumiditySensor();
+        Thermostat thermostat = new Thermostat();
 
-        IoTFacade facade = new IoTFacade(light , musicSystem , securityCamera , temperatureAndHumiditySensor);
+        IoTFacade facade = new IoTFacade(light , musicSystem , securityCamera , thermostat);
 
         System.out.println(musicSystemDecorator.operate());
         System.out.println("\n");
         System.out.println(lightDecorator.operate());
         System.out.println("\n");
 
-        facade.OnCameHome();
+        facade.cameHome();
         System.out.println("\n");
-        facade.OnLeftHome();
+        facade.partyMode();
+        System.out.println("\n");
+        facade.nightMode();
+        System.out.println("\n");
+        facade.leaveHome();
     }
 }
