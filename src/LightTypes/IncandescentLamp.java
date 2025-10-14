@@ -5,4 +5,9 @@ public class IncandescentLamp implements LightType{
     public String getType() {
         return "Incandescent Lamp";
     }
+
+    @Override
+    public float getEnergyUseMultiplier() {
+        return 4f;
+    }
 }

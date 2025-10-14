@@ -5,4 +5,9 @@ public class LED implements LightType{
     public String getType() {
         return "LED";
     }
+
+    @Override
+    public float getEnergyUseMultiplier() {
+        return .8f;
+    }
 }

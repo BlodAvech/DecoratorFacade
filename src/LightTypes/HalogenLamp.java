@@ -5,4 +5,9 @@ public class HalogenLamp implements LightType{
     public String getType() {
         return "Halogen Lamp";
     }
+
+    @Override
+    public float getEnergyUseMultiplier() {
+        return 3f;
+    }
 }

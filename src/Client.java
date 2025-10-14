@@ -9,13 +9,13 @@ public class Client
 {
     public void Execute()
     {
-        Device musicSystemDecorator = new EnergySavingDecorator(new VoiceControlDecorator(new MusicSystem()));
-        Device lightDecorator = new EnergySavingDecorator(new RemoteAccessDecorator(new Light(new HalogenLamp())));
+        Light light = new Light(new IncandescentLamp() , 200f);
+        MusicSystem musicSystem = new MusicSystem(150f);
+        SecurityCamera securityCamera = new SecurityCamera(100f);
+        Thermostat thermostat = new Thermostat(50f);
 
-        Light light = new Light(new IncandescentLamp());
-        MusicSystem musicSystem = new MusicSystem();
-        SecurityCamera securityCamera = new SecurityCamera();
-        Thermostat thermostat = new Thermostat();
+        EnergySavingDecorator musicSystemDecorator = new EnergySavingDecorator(new VoiceControlDecorator(musicSystem) , musicSystem);
+        EnergySavingDecorator lightDecorator = new EnergySavingDecorator(new RemoteAccessDecorator(light) , light);
 
         IoTFacade facade = new IoTFacade(light , musicSystem , securityCamera , thermostat);
 
@@ -31,5 +31,9 @@ public class Client
         facade.nightMode();
         System.out.println("\n");
         facade.leaveHome();
+
+        light.getInfo();
+        lightDecorator.saveEnergy();
+        musicSystemDecorator.saveEnergy();
     }
 }

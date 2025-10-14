@@ -1,15 +1,17 @@
 package Devices;
 
 import Enums.LightState;
+import LightTypes.HalogenLamp;
 import LightTypes.LightType;
 
-public class Light implements Device {
+public class Light extends EnergyConsumer implements Device {
 
     private final LightType lightType;
     private LightState state = LightState.OFF;
 
-    public Light(LightType lightType)
+    public Light(LightType lightType , float energyUse)
     {
+        super(energyUse * lightType.getEnergyUseMultiplier());
         this.lightType = lightType;
     }
 
@@ -19,6 +21,7 @@ public class Light implements Device {
         state = LightState.BRIGHT;
         return log;
     }
+
 
     public void changeState(LightState newState)
     {

@@ -1,12 +1,17 @@
 package Devices;
 
 import Enums.MusicVolume;
+import LightTypes.LightType;
 
-public class MusicSystem implements Device{
+public class MusicSystem extends EnergyConsumer implements Device{
 
     private boolean isPlaying = false;
     private String currentMusic = "";
     private MusicVolume volume = MusicVolume.MUTE;
+
+    public MusicSystem(float energyUse) {
+        super(energyUse);
+    }
 
     @Override
     public String operate() {
@@ -14,6 +19,7 @@ public class MusicSystem implements Device{
         isPlaying = true;
         return log;
     }
+
 
     public void setVolume(MusicVolume newVolume)
     {
@@ -45,4 +51,6 @@ public class MusicSystem implements Device{
     public String getCurrentMusic() {
         return currentMusic;
     }
+
+
 }

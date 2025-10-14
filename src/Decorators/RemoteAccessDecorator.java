@@ -4,7 +4,8 @@ import Devices.Device;
 
 public class RemoteAccessDecorator extends DeviceDecorator{
 
-    public RemoteAccessDecorator(Device device) {
+    public RemoteAccessDecorator(Device device)
+    {
         super(device);
     }
 
@@ -12,4 +13,5 @@ public class RemoteAccessDecorator extends DeviceDecorator{
     public String operate() {
         return getDevice().operate() + " by Remote Control";
     }
+
 }

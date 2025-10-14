@@ -1,7 +1,11 @@
 package Devices;
 
-public class SecurityCamera implements Device{
+public class SecurityCamera extends EnergyConsumer implements Device{
     private boolean isRecording = false;
+
+    public SecurityCamera(float energyUse) {
+        super(energyUse);
+    }
 
     @Override
     public String operate() {
@@ -9,6 +13,7 @@ public class SecurityCamera implements Device{
         isRecording = true;
         return log;
     }
+
 
     public void stopRecording()
     {
