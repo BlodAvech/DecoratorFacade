@@ -1,6 +1,7 @@
 package Decorators;
 
 import Devices.Device;
+import Enums.RemoteCommand;
 
 public class RemoteAccessDecorator extends DeviceDecorator{
 
@@ -14,4 +15,20 @@ public class RemoteAccessDecorator extends DeviceDecorator{
         return getDevice().operate() + " by Remote Control";
     }
 
+    @Override
+    public String turnOf() {
+        return getDevice().turnOf() + " by Remote Control";
+    }
+
+
+    @Override
+    public void remoteAccess(RemoteCommand remoteCommand) {
+        System.out.println(
+                switch (remoteCommand){
+                    case OPERATE -> operate();
+                    case TURNOFF -> turnOf();
+                    default -> "Unknown Command";
+                }
+        );
+    }
 }

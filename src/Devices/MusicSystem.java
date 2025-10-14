@@ -20,6 +20,12 @@ public class MusicSystem extends EnergyConsumer implements Device{
         return log;
     }
 
+    @Override
+    public String turnOf() {
+        stopPlaying();
+        return "Music System is turn Off";
+    }
+
 
     public void setVolume(MusicVolume newVolume)
     {

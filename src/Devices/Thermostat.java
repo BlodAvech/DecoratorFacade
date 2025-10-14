@@ -23,6 +23,12 @@ public class Thermostat extends EnergyConsumer implements Device{
         return log + "\n" + "Temp: " + getTemperature() + "C | Hum: " + getHumidity() + "%";
     }
 
+    @Override
+    public String turnOf() {
+        changeState(ThermostatState.OFF);
+        return "Thermostat is turn Off";
+    }
+
 
     public void changeState(ThermostatState newState)
     {

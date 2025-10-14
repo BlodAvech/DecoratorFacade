@@ -17,6 +17,12 @@ public class EnergySavingDecorator extends DeviceDecorator{
         return getDevice().operate() + "with Energy Saving ";
     }
 
+    @Override
+    public String turnOf() {
+        return getDevice().turnOf();
+    }
+
+    @Override
     public void saveEnergy() {
         float reducedEnergy = energyConsumer.getEnergyUse() * energyMultiplier;
         System.out.println("Energy Reduced from " + energyConsumer.getEnergyUse() + "kWh to " + reducedEnergy + "kWh");

@@ -3,6 +3,8 @@ import Decorators.EnergySavingDecorator;
 import Decorators.RemoteAccessDecorator;
 import Decorators.VoiceControlDecorator;
 import Devices.*;
+import Enums.RemoteCommand;
+import Enums.VoiceCommand;
 import LightTypes.*;
 
 public class Client
@@ -14,8 +16,8 @@ public class Client
         SecurityCamera securityCamera = new SecurityCamera(100f);
         Thermostat thermostat = new Thermostat(50f);
 
-        EnergySavingDecorator musicSystemDecorator = new EnergySavingDecorator(new VoiceControlDecorator(musicSystem) , musicSystem);
-        EnergySavingDecorator lightDecorator = new EnergySavingDecorator(new RemoteAccessDecorator(light) , light);
+        Device musicSystemDecorator = new EnergySavingDecorator(new VoiceControlDecorator(musicSystem) , musicSystem);
+        Device lightDecorator = new EnergySavingDecorator(new RemoteAccessDecorator(light) , light);
 
         IoTFacade facade = new IoTFacade(light , musicSystem , securityCamera , thermostat);
 
@@ -32,8 +34,13 @@ public class Client
         System.out.println("\n");
         facade.leaveHome();
 
-        light.getInfo();
-        lightDecorator.saveEnergy();
         musicSystemDecorator.saveEnergy();
+        musicSystemDecorator.voiceCommand(VoiceCommand.OPERATE);
+        musicSystemDecorator.voiceCommand(VoiceCommand.TURNOFF);
+
+        lightDecorator.saveEnergy();
+        lightDecorator.remoteAccess(RemoteCommand.OPERATE);
+        lightDecorator.remoteAccess(RemoteCommand.TURNOFF);
+
     }
 }

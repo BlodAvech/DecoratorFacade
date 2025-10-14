@@ -14,6 +14,12 @@ public class SecurityCamera extends EnergyConsumer implements Device{
         return log;
     }
 
+    @Override
+    public String turnOf() {
+        stopRecording();
+        return "Security Camera is turn Off";
+    }
+
 
     public void stopRecording()
     {

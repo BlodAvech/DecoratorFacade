@@ -22,6 +22,12 @@ public class Light extends EnergyConsumer implements Device {
         return log;
     }
 
+    @Override
+    public String turnOf() {
+        changeState(LightState.OFF);
+        return "Light is turn Off";
+    }
+
 
     public void changeState(LightState newState)
     {
