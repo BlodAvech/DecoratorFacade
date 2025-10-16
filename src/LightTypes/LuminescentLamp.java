@@ -7,7 +7,7 @@ public class LuminescentLamp implements LightType{
     }
 
     @Override
-    public float getEnergyUseMultiplier() {
-        return 1.5f;
+    public float getEnergyUse() {
+        return 150f;
     }
 }

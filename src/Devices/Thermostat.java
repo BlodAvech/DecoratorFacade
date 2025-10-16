@@ -6,21 +6,19 @@ import java.util.Random;
 
 public class Thermostat extends EnergyConsumer implements Device{
 
-    private final float temperature = 22f;
-    private final float humidity = 45f;
+    private float temperature = 22f;
     private ThermostatState state = ThermostatState.OFF;
 
-    private Random rnd = new Random();
 
-    public Thermostat(float energyUse) {
-        super(energyUse);
+    public Thermostat() {
+        super(50f);
     }
 
     @Override
     public String operate() {
         state = ThermostatState.GENERAL;
         String log = "Thermostat start work" +  " State(" + state + ") ";
-        return log + "\n" + "Temp: " + getTemperature() + "C | Hum: " + getHumidity() + "%";
+        return log + "\n" + "Temp: " + getTemperature() + "C";
     }
 
     @Override
@@ -35,12 +33,14 @@ public class Thermostat extends EnergyConsumer implements Device{
         System.out.println("Thermostat state changed from " + state + " to " + newState);
     }
 
-    public float getTemperature() {
-        return temperature * rnd.nextFloat(.9f ,1.1f);
+    public void setTemperature(float temperature)
+    {
+        System.out.println("Temperature set from " + this.temperature + "C to "  + temperature + "C");
+        this.temperature = temperature;
     }
 
-    public float getHumidity() {
-        return humidity * rnd.nextFloat(.9f ,1.1f);
+    public float getTemperature() {
+        return temperature;
     }
 
 }

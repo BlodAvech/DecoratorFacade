@@ -7,7 +7,7 @@ public class LED implements LightType{
     }
 
     @Override
-    public float getEnergyUseMultiplier() {
-        return .8f;
+    public float getEnergyUse() {
+        return 80f;
     }
 }

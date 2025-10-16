@@ -9,6 +9,6 @@ public interface  Device {
     public abstract String turnOf();
 
     default void voiceCommand(VoiceCommand command) {}
-    default void saveEnergy() {}
+    default float getEnergyUse() {return 0;}
     default void remoteAccess(RemoteCommand command) {}
 }

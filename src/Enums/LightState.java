@@ -1,7 +1,7 @@
-package Enums;
+    package Enums;
 
-public enum LightState {
-    BRIGHT,
-    DIM,
-    OFF
-}
+    public enum LightState {
+        BRIGHT,
+        DIM,
+        OFF
+    }

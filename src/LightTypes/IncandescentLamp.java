@@ -7,7 +7,7 @@ public class IncandescentLamp implements LightType{
     }
 
     @Override
-    public float getEnergyUseMultiplier() {
-        return 4f;
+    public float getEnergyUse() {
+        return 400f;
     }
 }

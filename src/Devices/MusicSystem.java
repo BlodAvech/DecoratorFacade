@@ -9,8 +9,8 @@ public class MusicSystem extends EnergyConsumer implements Device{
     private String currentMusic = "";
     private MusicVolume volume = MusicVolume.MUTE;
 
-    public MusicSystem(float energyUse) {
-        super(energyUse);
+    public MusicSystem() {
+        super(200.0f);
     }
 
     @Override

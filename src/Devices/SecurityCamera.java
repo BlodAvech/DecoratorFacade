@@ -1,15 +1,18 @@
 package Devices;
 
 public class SecurityCamera extends EnergyConsumer implements Device{
+    private static int id = 1;
+    private final int cameraId;
     private boolean isRecording = false;
 
-    public SecurityCamera(float energyUse) {
-        super(energyUse);
+    public SecurityCamera() {
+        super(100f);
+        cameraId = id++;
     }
 
     @Override
     public String operate() {
-        String log = "Camera " + (isRecording ? "already recording" : "start recording");
+        String log = "Camera #" + cameraId + " " + (isRecording ? "already recording" : "start recording");
         isRecording = true;
         return log;
     }
@@ -25,5 +28,9 @@ public class SecurityCamera extends EnergyConsumer implements Device{
     {
         isRecording = false;
         System.out.println("Recording is Stop");
+    }
+
+    public int getId() {
+        return cameraId;
     }
 }

@@ -7,7 +7,7 @@ public class HalogenLamp implements LightType{
     }
 
     @Override
-    public float getEnergyUseMultiplier() {
-        return 3f;
+    public float getEnergyUse() {
+        return 300f;
     }
 }

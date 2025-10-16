@@ -22,8 +22,9 @@ public abstract class DeviceDecorator implements Device {
     }
 
     @Override
-    public void saveEnergy() {
-        device.saveEnergy();
+    public float getEnergyUse() {
+        device.getEnergyUse();
+        return 0;
     }
 
     @Override

@@ -1,7 +1,11 @@
+import Application.Application;
+import Devices.SecurityCamera;
+
 public class Main {
     public static void main(String[] args) {
 
-        Client client = new Client();
-        client.Execute();
+        Application application = new Application();
+        application.Run();
+
     }
 }
