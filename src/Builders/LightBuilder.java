@@ -1,6 +1,7 @@
 package Builders;
 
 import Devices.Light;
+import LightTypes.Empty;
 import LightTypes.LightType;
 
 public class LightBuilder implements ILightBuilder {
@@ -8,7 +9,7 @@ public class LightBuilder implements ILightBuilder {
 
     public LightBuilder()
     {
-        light = new Light();
+        light = new Light(new Empty());
     }
 
     public LightBuilder(Light light)
@@ -23,6 +24,6 @@ public class LightBuilder implements ILightBuilder {
 
     @Override
     public Light build() {
-        return null;
+        return light;
     }
 }

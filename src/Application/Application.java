@@ -1,28 +1,25 @@
 package Application;
 
 import Application.Enums.MenuOption;
-import Application.Services.MenuService;
-import Application.Services.MusicSystemService;
-import Application.Services.SecurityCameraListService;
-import Application.Services.ThermostatService;
-import Factories.DeviceFactory;
-
+import Application.Services.*;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import java.util.Scanner;
+import Storages.DeviceStorage;
 
 
 public class Application
 {
-    //Factory
-    private final DeviceFactory deviceFactory = new DeviceFactory();
+    private final DeviceStorage deviceStorage = new DeviceStorage();
 
     //Application.Services
     private final MenuService menuService = new MenuService();
     private final MusicSystemService musicSystemService = new MusicSystemService(this);
     private final ThermostatService thermostatService = new ThermostatService(this);
     private final SecurityCameraListService securityCameraListService = new SecurityCameraListService(this);
+    private final LightListService lightListService = new LightListService(this);
+    private final LightService lightService = new LightService(this);
 
     private Scanner scanner;
 
@@ -38,8 +35,6 @@ public class Application
         {
             MenuOption menuOption = menuService.displayMainMenu(scanner);
 
-            if(menuOption == MenuOption.EXIT) break;
-
             handleMenuOption(menuOption);
         }
     }
@@ -48,10 +43,11 @@ public class Application
     {
         switch (menuOption)
         {
-//            case LIGHTS_LIST -> ;
+              case LIGHTS_LIST -> lightListService.Open(scanner);
               case MUSIC_SYSTEM -> musicSystemService.Open(scanner);
               case THERMOSTAT -> thermostatService.Open(scanner);
               case SECURITY_CAMERAS -> securityCameraListService.Open(scanner);
+              case EXIT -> System.exit(0);
 //            case FACADE -> ;
         }
     }
@@ -67,7 +63,10 @@ public class Application
         Locale.setDefault(new Locale("ru", "RU"));
     }
 
-    public DeviceFactory getDeviceFactory() {
-        return deviceFactory;
+    public DeviceStorage getDeviceFactory() {
+        return deviceStorage;
     }
+
+    public LightListService getLightListService() {return lightListService;}
+    public LightService getLightService() {return lightService;}
 }

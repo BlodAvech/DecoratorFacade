@@ -3,7 +3,7 @@ package Application.Enums;
 public enum CameraListOption
 {
     ADD_NEW_CAMERA(1),
-    DELETE_CAMERA(2),
+    REMOVE_CAMERA(2),
     GET_CAMERA_LIST(3),
     OPERATE(4),
     TURN_OFF(5),

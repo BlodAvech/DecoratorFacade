@@ -22,7 +22,7 @@ public class ThermostatService extends Service
         }
     }
 
-    public ThermostatOption displayThermostatOptions(Scanner scanner)
+    private ThermostatOption displayThermostatOptions(Scanner scanner)
     {
         System.out.println("\n=== Главное меню Управления Термостатом ===");
         System.out.println("1. Запустить");
@@ -37,7 +37,7 @@ public class ThermostatService extends Service
         return ThermostatOption.fromValue(choice);
     }
 
-    public void handleThermostatOption(ThermostatOption thermostatOption , Scanner scanner)
+    private void handleThermostatOption(ThermostatOption thermostatOption , Scanner scanner)
     {
         switch (thermostatOption)
         {
@@ -66,7 +66,7 @@ public class ThermostatService extends Service
         return ThermostatState.fromValue(choice);
     }
 
-    public float onSetTemperature(Scanner scanner)
+    private float onSetTemperature(Scanner scanner)
     {
         System.out.println("\n=== Установите Температуру Термостата ===");
         System.out.print("Температура (999 to exit): ");

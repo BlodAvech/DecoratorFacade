@@ -20,7 +20,7 @@ public class SecurityCamera extends EnergyConsumer implements Device{
     @Override
     public String turnOf() {
         stopRecording();
-        return "Security Camera is turn Off";
+        return "Security Camera #" + cameraId + " is turn Off";
     }
 
 
@@ -33,4 +33,7 @@ public class SecurityCamera extends EnergyConsumer implements Device{
     public int getId() {
         return cameraId;
     }
+
+    public static int getMaxId() {return id;}
+
 }

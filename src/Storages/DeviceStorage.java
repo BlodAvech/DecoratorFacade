@@ -1,18 +1,17 @@
-package Factories;
+package Storages;
 
 import Devices.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeviceFactory
+public class DeviceStorage
 {
     private final List<Light> lights;
     private final MusicSystem musicSystem;
     private final Thermostat thermostat;
     private final List<SecurityCamera> cameras;
 
-    public DeviceFactory()
+    public DeviceStorage()
     {
         lights = new ArrayList<>();
         musicSystem = new MusicSystem();
@@ -53,6 +52,7 @@ public class DeviceFactory
             if (camera.getId() == id)
             {
                 cameras.remove(camera);
+                System.out.println(camera.getId() + " has been removed");
                 return;
             }
         }
@@ -66,6 +66,7 @@ public class DeviceFactory
             if (light.getId() == id)
             {
                 lights.remove(light);
+                System.out.println("Light with id " + id + " removed");
                 return;
             }
         }

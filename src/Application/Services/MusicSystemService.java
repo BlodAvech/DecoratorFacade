@@ -3,7 +3,6 @@ package Application.Services;
 import Application.*;
 import Application.Enums.*;
 import Enums.*;
-import Factories.*;
 
 import java.util.Scanner;
 
@@ -25,7 +24,7 @@ public class MusicSystemService extends Service
             handleMusicSystemOption(musicSystemOption , scanner);
         }
     }
-    public MusicSystemOption displayMusicSystemOptions(Scanner scanner)
+    private MusicSystemOption displayMusicSystemOptions(Scanner scanner)
     {
         System.out.println("\n=== Главное меню Управления Музыкой ===");
         System.out.println("1. Запустить");
@@ -42,7 +41,7 @@ public class MusicSystemService extends Service
         return MusicSystemOption.fromValue(choice);
     }
 
-    public void handleMusicSystemOption(MusicSystemOption musicSystemOption , Scanner scanner)
+    private void handleMusicSystemOption(MusicSystemOption musicSystemOption , Scanner scanner)
     {
         switch(musicSystemOption)
         {
@@ -57,7 +56,7 @@ public class MusicSystemService extends Service
         }
     }
 
-    public MusicVolume onSetValue(Scanner scanner)
+    private MusicVolume onSetValue(Scanner scanner)
     {
         System.out.println("\n=== Выберите Громкость ===");
         System.out.println("1. Максимальный");
@@ -72,7 +71,7 @@ public class MusicSystemService extends Service
         if(choice == 5) Open(scanner);
         return MusicVolume.fromValue(choice);
     }
-    public String onSetMusic(Scanner scanner)
+    private String onSetMusic(Scanner scanner)
     {
             System.out.println("\n=== Выберите Музыку ===");
             String choice = InputValidator.getStringInput(scanner , "Введите название музыки(e to exit):");

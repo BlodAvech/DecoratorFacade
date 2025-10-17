@@ -1,15 +1,18 @@
 package Devices;
 
 import Enums.LightState;
+import LightTypes.Empty;
 import LightTypes.HalogenLamp;
 import LightTypes.LightType;
+
+import java.util.Objects;
 
 public class Light extends EnergyConsumer implements Device
 {
     private static int id = 1;
     private final int lightId;
 
-    private LightType lightType;
+    private LightType lightType = new Empty();
     private LightState state = LightState.OFF;
 
 
@@ -29,15 +32,21 @@ public class Light extends EnergyConsumer implements Device
 
     @Override
     public String operate() {
-        String log = "Light (" + lightType.getType() + ") state changed from " + state + " to " + LightState.BRIGHT;
-        state = LightState.BRIGHT;
+        String log;
+        if(Objects.equals(lightType.getType(), "Empty"))
+        {
+            log = "Light #" + lightId +  " (" + lightType.getType() + ") is Empty";
+            return log;
+        }
+        log = "Light #" + lightId +  " (" + lightType.getType() + ") state changed from " + state + " to " + LightState.NORMAL;
+        state = LightState.NORMAL;
         return log;
     }
 
     @Override
     public String turnOf() {
         changeState(LightState.OFF);
-        return "Light is turn Off";
+        return "Light #" + lightId + " is turn Off";
     }
 
     @Override
@@ -48,14 +57,14 @@ public class Light extends EnergyConsumer implements Device
 
     public void changeState(LightState newState)
     {
-        System.out.println("Light (" + lightType.getType() + ") state changed from " + state + " to " + newState);
+        System.out.println("Light #" + lightId + " (" + lightType.getType() + ") state changed from " + state + " to " + newState);
         state = newState;
         setEnergyUse(lightType.getEnergyUse());
     }
 
     public void changeLightType(LightType lightType)
     {
-        System.out.println("Light type changed from " + this.lightType.getType() + " to " + lightType.getType());
+        System.out.println("Light #" + lightId + " type changed from " + this.lightType.getType() + " to " + lightType.getType());
         this.lightType = lightType;
     }
 
@@ -66,4 +75,6 @@ public class Light extends EnergyConsumer implements Device
     public int getId() {
         return lightId;
     }
+
+    public static int getMaxId() {return id;}
 }
