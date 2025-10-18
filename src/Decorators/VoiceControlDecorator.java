@@ -27,7 +27,7 @@ public class VoiceControlDecorator extends DeviceDecorator {
                 switch (voiceCommand){
                     case OPERATE -> operate();
                     case TURNOFF -> turnOf();
-                    default -> "Unknown Command";
+                    case UNKNOWN -> "Unknown command";
                 }
         );
     }

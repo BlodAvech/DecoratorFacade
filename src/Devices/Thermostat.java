@@ -43,4 +43,8 @@ public class Thermostat extends EnergyConsumer implements Device{
         return temperature;
     }
 
+    @Override
+    public EnergyConsumer getEnergyConsumer() {
+        return this;
+    }
 }

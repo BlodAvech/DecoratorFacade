@@ -8,7 +8,8 @@ public enum ThermostatOption {
     SET_TEMPERATURE(3),
     GET_TEMPERATURE(4),
     TURN_OFF(5),
-    EXIT(6);
+    DECORATORS(6),
+    EXIT(7);
 
     private final int value;
 

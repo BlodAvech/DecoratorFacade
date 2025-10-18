@@ -22,6 +22,7 @@ public class Application
     private final LightListService lightListService = new LightListService(this);
     private final LightService lightService = new LightService(this);
     private final FacadeService facadeService = new FacadeService(this);
+    private final DecoratorsService decoratorsService = new DecoratorsService(this);
 
     private Scanner scanner;
 
@@ -71,4 +72,5 @@ public class Application
 
     public LightListService getLightListService() {return lightListService;}
     public LightService getLightService() {return lightService;}
+    public DecoratorsService getDecoratorsService() {return decoratorsService;}
 }

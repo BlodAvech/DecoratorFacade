@@ -34,10 +34,11 @@ public class MusicSystemService extends Service
         System.out.println("5. Приостановить Музыку");
         System.out.println("6. Показать текущую музыку");
         System.out.println("7. Выключить");
-        System.out.println("8. Выйти");
+        System.out.println("8. Декораторы");
+        System.out.println("9. Выйти");
         System.out.print("Выберите опцию: ");
 
-        int choice = InputValidator.getIntInput(scanner, 1, 8);
+        int choice = InputValidator.getIntInput(scanner, 1, 9);
         return MusicSystemOption.fromValue(choice);
     }
 
@@ -52,6 +53,7 @@ public class MusicSystemService extends Service
             case STOP_PLAYING ->   getApplication().getDeviceStorage().getMusicSystem().stopPlaying();
             case GET_CURRENT_MUSIC ->  System.out.println("Current Music is: " + getApplication().getDeviceStorage().getMusicSystem().getCurrentMusic());
             case TURN_OFF -> System.out.println(getApplication().getDeviceStorage().getMusicSystem().turnOf());
+            case DECORATORS -> getApplication().getDecoratorsService().Open(scanner , getApplication().getDeviceStorage().getMusicSystem() , this);
             case EXIT -> getApplication().Run();
         }
     }

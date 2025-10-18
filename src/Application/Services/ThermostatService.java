@@ -30,10 +30,11 @@ public class ThermostatService extends Service
         System.out.println("3. Утановить Температуру");
         System.out.println("4. Текущая установленная Температура");
         System.out.println("5. Выключить");
-        System.out.println("6. Выйти");
+        System.out.println("6. Декораторы");
+        System.out.println("7. Выйти");
         System.out.print("Выберите опцию: ");
 
-        int choice = InputValidator.getIntInput(scanner, 1, 6);
+        int choice = InputValidator.getIntInput(scanner, 1, 7);
         return ThermostatOption.fromValue(choice);
     }
 
@@ -46,6 +47,7 @@ public class ThermostatService extends Service
             case SET_TEMPERATURE -> getApplication().getDeviceStorage().getThermostat().setTemperature(onSetTemperature(scanner));
             case GET_TEMPERATURE ->  System.out.println("Current Temperature is " + getApplication().getDeviceStorage().getThermostat().getTemperature() + "C");
             case TURN_OFF -> System.out.println(getApplication().getDeviceStorage().getThermostat().turnOf());
+            case DECORATORS -> getApplication().getDecoratorsService().Open(scanner ,  getApplication().getDeviceStorage().getThermostat() , this);
             case EXIT -> getApplication().Run();
         }
     }

@@ -27,7 +27,6 @@ public class RemoteAccessDecorator extends DeviceDecorator{
                 switch (remoteCommand){
                     case OPERATE -> operate();
                     case TURNOFF -> turnOf();
-                    default -> "Unknown Command";
                 }
         );
     }

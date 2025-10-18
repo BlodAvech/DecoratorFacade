@@ -77,4 +77,9 @@ public class Light extends EnergyConsumer implements Device
     }
 
     public static int getMaxId() {return id;}
+
+    @Override
+    public EnergyConsumer getEnergyConsumer() {
+        return this;
+    }
 }

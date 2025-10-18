@@ -46,10 +46,11 @@ public class LightService extends Service
         System.out.println("2. Поменять Яркость");
         System.out.println("3. Заменить Освещение");
         System.out.println("4. Выключить");
-        System.out.println("5. Выйти");
+        System.out.println("5. Декораторы");
+        System.out.println("6. Выйти");
         System.out.print("Выберите опцию: ");
 
-        int choice = InputValidator.getIntInput(scanner, 1, 5);
+        int choice = InputValidator.getIntInput(scanner, 1, 6);
         return LightOption.fromValue(choice);
     }
 
@@ -61,6 +62,7 @@ public class LightService extends Service
             case CHANGE_STATE ->  currentLight.changeState(onChangeState(scanner));
             case OPERATE -> System.out.println(currentLight.operate());
             case TURN_OFF -> System.out.println(currentLight.turnOf());
+            case DECORATORS -> getApplication().getDecoratorsService().Open(scanner , currentLight , this);
             case EXIT -> getApplication().getLightListService().Open(scanner);
         }
     }

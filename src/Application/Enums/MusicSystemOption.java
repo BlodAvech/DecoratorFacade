@@ -8,7 +8,8 @@ public enum MusicSystemOption {
     STOP_PLAYING(5),
     GET_CURRENT_MUSIC(6),
     TURN_OFF(7),
-    EXIT(8);
+    DECORATORS(8),
+    EXIT(9);
 
     private final int value;
 

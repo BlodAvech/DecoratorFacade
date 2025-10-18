@@ -1,22 +1,20 @@
 package Application.Enums;
 
-public enum LightOption
+public enum DecoratorsOption
 {
-    OPERATE(1),
-    CHANGE_STATE(2),
-    CHANGE_LIGHT(3),
-    TURN_OFF(4),
-    DECORATORS(5),
-    EXIT(6);
+    ENERGY_SAVE(1),
+    REMOTE_ACCESS(2),
+    VOICE_CONTROL(3),
+    EXIT(4);
 
     private final int value;
 
-    LightOption(int value) {
+    DecoratorsOption(int value) {
         this.value = value;
     }
 
-    public static LightOption fromValue(int value) {
-        for (LightOption option : values()) {
+    public static DecoratorsOption fromValue(int value) {
+        for (DecoratorsOption option : values()) {
             if (option.value == value) {
                 return option;
             }

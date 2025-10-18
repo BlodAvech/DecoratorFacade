@@ -11,4 +11,6 @@ public interface  Device {
     default void voiceCommand(VoiceCommand command) {}
     default float getEnergyUse() {return 0;}
     default void remoteAccess(RemoteCommand command) {}
+
+    default EnergyConsumer getEnergyConsumer() {return null;}
 }

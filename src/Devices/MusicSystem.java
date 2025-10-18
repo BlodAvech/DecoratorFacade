@@ -58,5 +58,8 @@ public class MusicSystem extends EnergyConsumer implements Device{
         return currentMusic;
     }
 
-
+    @Override
+    public EnergyConsumer getEnergyConsumer() {
+        return this;
+    }
 }

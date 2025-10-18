@@ -1,6 +1,8 @@
 package Storages;
 
+import Decorators.*;
 import Devices.*;
+import Enums.Decorators;
 import Facade.IoTFacade;
 
 import java.util.ArrayList;
@@ -104,5 +106,16 @@ public class DeviceStorage
 
     public IoTFacade getFacade() {
         return facade;
+    }
+
+
+    public Device wrapDevice(Device device , Decorators decorator)
+    {
+        return switch (decorator)
+        {
+            case ENERGY_SAVE -> new EnergySavingDecorator(device , device.getEnergyConsumer());
+            case REMOTE_ACCESS -> new RemoteAccessDecorator(device);
+            case VOICE_CONTROL -> new VoiceControlDecorator(device);
+        };
     }
 }
