@@ -1,8 +1,11 @@
 package Storages;
 
 import Devices.*;
+import Facade.IoTFacade;
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class DeviceStorage
 {
@@ -10,6 +13,7 @@ public class DeviceStorage
     private final MusicSystem musicSystem;
     private final Thermostat thermostat;
     private final List<SecurityCamera> cameras;
+    private final IoTFacade facade;
 
     public DeviceStorage()
     {
@@ -17,6 +21,7 @@ public class DeviceStorage
         musicSystem = new MusicSystem();
         thermostat = new Thermostat();
         cameras = new ArrayList<>();
+        facade = new IoTFacade(lights , musicSystem , thermostat , cameras);
     }
 
     public List<Light> getLights() {
@@ -97,5 +102,7 @@ public class DeviceStorage
         return null;
     }
 
-
+    public IoTFacade getFacade() {
+        return facade;
+    }
 }

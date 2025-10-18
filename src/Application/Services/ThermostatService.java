@@ -41,11 +41,11 @@ public class ThermostatService extends Service
     {
         switch (thermostatOption)
         {
-            case OPERATE -> System.out.println(getApplication().getDeviceFactory().getThermostat().operate());
-            case CHANGE_STATE -> getApplication().getDeviceFactory().getThermostat().changeState(onChangeState(scanner));
-            case SET_TEMPERATURE -> getApplication().getDeviceFactory().getThermostat().setTemperature(onSetTemperature(scanner));
-            case GET_TEMPERATURE ->  System.out.println("Current Temperature is " + getApplication().getDeviceFactory().getThermostat().getTemperature() + "C");
-            case TURN_OFF -> System.out.println(getApplication().getDeviceFactory().getThermostat().turnOf());
+            case OPERATE -> System.out.println(getApplication().getDeviceStorage().getThermostat().operate());
+            case CHANGE_STATE -> getApplication().getDeviceStorage().getThermostat().changeState(onChangeState(scanner));
+            case SET_TEMPERATURE -> getApplication().getDeviceStorage().getThermostat().setTemperature(onSetTemperature(scanner));
+            case GET_TEMPERATURE ->  System.out.println("Current Temperature is " + getApplication().getDeviceStorage().getThermostat().getTemperature() + "C");
+            case TURN_OFF -> System.out.println(getApplication().getDeviceStorage().getThermostat().turnOf());
             case EXIT -> getApplication().Run();
         }
     }

@@ -38,8 +38,8 @@ public class Light extends EnergyConsumer implements Device
             log = "Light #" + lightId +  " (" + lightType.getType() + ") is Empty";
             return log;
         }
-        log = "Light #" + lightId +  " (" + lightType.getType() + ") state changed from " + state + " to " + LightState.NORMAL;
-        state = LightState.NORMAL;
+        log = "Light #" + lightId +  " (" + lightType.getType() + ") state changed from " + state + " to " + LightState.BRIGHT;
+        state = LightState.BRIGHT;
         return log;
     }
 

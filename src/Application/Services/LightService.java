@@ -94,15 +94,14 @@ public class LightService extends Service
     {
         System.out.println("\n=== Выберите Яркость ===");
         System.out.println("1. Яркий");
-        System.out.println("2. Обычный");
-        System.out.println("3. Тусклый");
-        System.out.println("4. Выключенн");
-        System.out.println("5. Отмена");
+        System.out.println("2. Тусклый");
+        System.out.println("3. Выключенн");
+        System.out.println("4. Отмена");
         System.out.print("Выберите опцию: ");
 
-        int choice = InputValidator.getIntInput(scanner, 1, 5);
+        int choice = InputValidator.getIntInput(scanner, 1, 4);
 
-        if(choice == 5) Open(scanner);
+        if(choice == 4) Open(scanner);
         return LightState.fromValue(choice);
     }
 

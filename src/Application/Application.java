@@ -1,5 +1,6 @@
 package Application;
 
+import Application.Enums.FacadeOption;
 import Application.Enums.MenuOption;
 import Application.Services.*;
 import java.io.InputStreamReader;
@@ -20,6 +21,7 @@ public class Application
     private final SecurityCameraListService securityCameraListService = new SecurityCameraListService(this);
     private final LightListService lightListService = new LightListService(this);
     private final LightService lightService = new LightService(this);
+    private final FacadeService facadeService = new FacadeService(this);
 
     private Scanner scanner;
 
@@ -47,8 +49,8 @@ public class Application
               case MUSIC_SYSTEM -> musicSystemService.Open(scanner);
               case THERMOSTAT -> thermostatService.Open(scanner);
               case SECURITY_CAMERAS -> securityCameraListService.Open(scanner);
+              case FACADE -> facadeService.Open(scanner);
               case EXIT -> System.exit(0);
-//            case FACADE -> ;
         }
     }
 
@@ -63,7 +65,7 @@ public class Application
         Locale.setDefault(new Locale("ru", "RU"));
     }
 
-    public DeviceStorage getDeviceFactory() {
+    public DeviceStorage getDeviceStorage() {
         return deviceStorage;
     }
 

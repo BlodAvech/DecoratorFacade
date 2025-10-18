@@ -45,13 +45,13 @@ public class MusicSystemService extends Service
     {
         switch(musicSystemOption)
         {
-            case OPERATE -> System.out.println(getApplication().getDeviceFactory().getMusicSystem().operate());
-            case SET_VOLUME -> getApplication().getDeviceFactory().getMusicSystem().setVolume(onSetValue(scanner));
-            case SET_MUSIC -> getApplication().getDeviceFactory().getMusicSystem().setMusic(onSetMusic(scanner));
-            case RESET_MUSIC ->  getApplication().getDeviceFactory().getMusicSystem().resetMusic();
-            case STOP_PLAYING ->   getApplication().getDeviceFactory().getMusicSystem().stopPlaying();
-            case GET_CURRENT_MUSIC ->  System.out.println("Current Music is: " + getApplication().getDeviceFactory().getMusicSystem().getCurrentMusic());
-            case TURN_OFF -> System.out.println(getApplication().getDeviceFactory().getMusicSystem().turnOf());
+            case OPERATE -> System.out.println(getApplication().getDeviceStorage().getMusicSystem().operate());
+            case SET_VOLUME -> getApplication().getDeviceStorage().getMusicSystem().setVolume(onSetValue(scanner));
+            case SET_MUSIC -> getApplication().getDeviceStorage().getMusicSystem().setMusic(onSetMusic(scanner));
+            case RESET_MUSIC ->  getApplication().getDeviceStorage().getMusicSystem().resetMusic();
+            case STOP_PLAYING ->   getApplication().getDeviceStorage().getMusicSystem().stopPlaying();
+            case GET_CURRENT_MUSIC ->  System.out.println("Current Music is: " + getApplication().getDeviceStorage().getMusicSystem().getCurrentMusic());
+            case TURN_OFF -> System.out.println(getApplication().getDeviceStorage().getMusicSystem().turnOf());
             case EXIT -> getApplication().Run();
         }
     }

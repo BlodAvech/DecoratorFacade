@@ -46,14 +46,14 @@ public class LightListService extends Service
     {
         switch (option)
         {
-            case ADD_NEW_LIGHT -> getApplication().getDeviceFactory().addNewLight(onAddNewLight(scanner));
-            case REMOVE_LIGHT -> getApplication().getDeviceFactory().removeLightById(onRemoveCamera(scanner));
+            case ADD_NEW_LIGHT -> getApplication().getDeviceStorage().addNewLight(onAddNewLight(scanner));
+            case REMOVE_LIGHT -> getApplication().getDeviceStorage().removeLightById(onRemoveCamera(scanner));
             case GET_LIGHT_LIST -> showLightList();
-            case SELECT_LIGHT -> getApplication().getLightService().Open(scanner ,getApplication().getDeviceFactory().getLightById(onSelectLight(scanner)));
-            case OPERATE -> getApplication().getDeviceFactory().getLights().forEach(light -> {
+            case SELECT_LIGHT -> getApplication().getLightService().Open(scanner ,getApplication().getDeviceStorage().getLightById(onSelectLight(scanner)));
+            case OPERATE -> getApplication().getDeviceStorage().getLights().forEach(light -> {
                 System.out.println(light.operate());
             });
-            case TURN_OFF -> getApplication().getDeviceFactory().getLights().forEach(light -> {
+            case TURN_OFF -> getApplication().getDeviceStorage().getLights().forEach(light -> {
                 System.out.println(light.turnOf());
             });
             case EXIT -> getApplication().Run();
@@ -111,7 +111,7 @@ public class LightListService extends Service
     private void showLightList()
     {
         int i = 1;
-        for(Light light : getApplication().getDeviceFactory().getLights())
+        for(Light light : getApplication().getDeviceStorage().getLights())
         {
             System.out.println(i + ".Light #" + light.getId() + " (" + light.getLightType().getType() + ")");
             i++;

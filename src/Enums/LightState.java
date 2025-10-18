@@ -2,9 +2,8 @@
 
     public enum LightState {
         BRIGHT(1),
-        NORMAL(2),
-        DIM(3),
-        OFF(4);
+        DIM(2),
+        OFF(3);
 
         private final int value;
 

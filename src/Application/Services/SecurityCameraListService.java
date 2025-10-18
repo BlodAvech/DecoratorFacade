@@ -45,13 +45,13 @@ public class SecurityCameraListService extends Service
     {
         switch(cameraListOption)
         {
-            case ADD_NEW_CAMERA -> getApplication().getDeviceFactory().addNewCamera(onAddNewCamera());
-            case REMOVE_CAMERA -> getApplication().getDeviceFactory().removeCameraById(onRemoveCamera(scanner));
+            case ADD_NEW_CAMERA -> getApplication().getDeviceStorage().addNewCamera(onAddNewCamera());
+            case REMOVE_CAMERA -> getApplication().getDeviceStorage().removeCameraById(onRemoveCamera(scanner));
             case GET_CAMERA_LIST -> showSecurityCameraList();
-            case OPERATE -> getApplication().getDeviceFactory().getCameras().forEach(camera -> {
+            case OPERATE -> getApplication().getDeviceStorage().getCameras().forEach(camera -> {
                 System.out.println(camera.operate());
             });
-            case TURN_OFF -> getApplication().getDeviceFactory().getCameras().forEach(camera -> {
+            case TURN_OFF -> getApplication().getDeviceStorage().getCameras().forEach(camera -> {
                 System.out.println(camera.turnOf());
             });
             case EXIT -> getApplication().Run();
@@ -77,7 +77,7 @@ public class SecurityCameraListService extends Service
     private void showSecurityCameraList()
     {
         int i = 1;
-        for(SecurityCamera securityCamera : getApplication().getDeviceFactory().getCameras())
+        for(SecurityCamera securityCamera : getApplication().getDeviceStorage().getCameras())
         {
             System.out.println(i + ".Camera #" + securityCamera.getId());
             i++;
