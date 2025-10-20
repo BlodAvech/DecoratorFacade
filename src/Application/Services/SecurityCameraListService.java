@@ -68,10 +68,12 @@ public class SecurityCameraListService extends Service
 
     private int onRemoveCamera(Scanner scanner)
     {
+        System.out.println("0.Cancel");
         showSecurityCameraList();
-
         System.out.print("Введите ID камеры которую хотите убрать:");
-        return InputValidator.getIntInput(scanner, 1, SecurityCamera.getMaxId());
+        int choice = InputValidator.getIntInput(scanner, 0, SecurityCamera.getMaxId());
+        if(choice == 0) Open(scanner);
+        return choice;
     }
 
     private void showSecurityCameraList()

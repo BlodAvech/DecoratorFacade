@@ -4,6 +4,7 @@ import Application.*;
 import Application.Enums.LightListOption;
 import Builders.LightBuilder;
 import Devices.Light;
+import Devices.SecurityCamera;
 import LightTypes.*;
 
 import java.util.Scanner;
@@ -47,7 +48,7 @@ public class LightListService extends Service
         switch (option)
         {
             case ADD_NEW_LIGHT -> getApplication().getDeviceStorage().addNewLight(onAddNewLight(scanner));
-            case REMOVE_LIGHT -> getApplication().getDeviceStorage().removeLightById(onRemoveCamera(scanner));
+            case REMOVE_LIGHT -> getApplication().getDeviceStorage().removeLightById(onRemoveLight(scanner));
             case GET_LIGHT_LIST -> showLightList();
             case SELECT_LIGHT -> getApplication().getLightService().Open(scanner ,getApplication().getDeviceStorage().getLightById(onSelectLight(scanner)));
             case OPERATE -> getApplication().getDeviceStorage().getLights().forEach(light -> {
@@ -100,13 +101,16 @@ public class LightListService extends Service
         };
     }
 
-    private int onRemoveCamera(Scanner scanner)
+    private int onRemoveLight(Scanner scanner)
     {
+        System.out.println("0.Cancel");
         showLightList();
 
         System.out.print("Введите ID освещения которого хотите убрать:");
-        return InputValidator.getIntInput(scanner, 1, Light.getMaxId());
-    }
+
+        int choice = InputValidator.getIntInput(scanner, 0, SecurityCamera.getMaxId());
+        if(choice == 0) Open(scanner);
+        return choice;    }
 
     private void showLightList()
     {
